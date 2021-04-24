@@ -22,6 +22,7 @@ Subject to changes
 EYE_AR_THRESH = 0.3
 EYE_AR_CONSEC_FRAMES = 30
 YAWN_THRESH = 20	//change this according to the distance from the camera
+
 shape_predictor_68_face_landmarks.dat needs to be downloaded via any public repository and the path for it must be specified in the python script
 
 
