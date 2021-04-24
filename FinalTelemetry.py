@@ -95,9 +95,7 @@ time.sleep(1.0)
 #  az  iot  hub  device-identity  show-connection-string  --hub-name  {YourIoTHubName}  --device-id  MyNodeDevice  --output  table
 CONNECTION_STRING  =  "HostName=Drowsiness.azure-devices.net;DeviceId=RasPi_Drowsiness;SharedAccessKey=AYJxOa1UQi08+Oor0ES/vm68yuNKq20cqIk9FZi7+7o="
 
-#  Define  the  JSON  message  to  send  to  IoT  Hub.
-# TEMPERATURE  =  20.0
-# HUMIDITY  =  60
+
 MSG_TXT  =  '{{"temperature":  {EAR},"humidity":  {yawn}}}'
 message=''
 
@@ -112,32 +110,14 @@ try:
         print  (  "IoT  Hub  device  sending  periodic  messages,  press  Ctrl-C  to  exit"  )
 
         while  True:
-                # #  Build  the  message  with  simulated  telemetry  values.
-                # temperature  =  TEMPERATURE  +  (random.random()  *  15)
-                # humidity  =  HUMIDITY # +  (random.random()  *  20)
-                
-                
-
-                # #  Add  a  custom  application  property  to  the  message.
-                # #  An  IoT  hub  can  filter  on  these  properties  without  access  to  the  message  body.
-                # if  temperature  >  30:
-                #     message.custom_properties["temperatureAlert"]  =  "true"
-                # else:
-                #     message.custom_properties["temperatureAlert"]  =  "false"
-
-                #  Send  the  message.
-                
-                
-                
-                # _,
+               
+               
                 frame = vs.read()
                 
                 (w, h, c) = frame.shape
-                # img=cv2.resize(frame,(450, h))
-                #frame = vs.read()
-                #frame = imutils.resize(frame, width=450)
+                
                 gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-                # time.sleep(3)
+ 
                 rects = detector.detectMultiScale(gray, scaleFactor=1.1, 
                     minNeighbors=5, minSize=(30, 30),
                     flags=cv2.CASCADE_SCALE_IMAGE)
