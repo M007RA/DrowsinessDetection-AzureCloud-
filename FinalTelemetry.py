@@ -88,8 +88,6 @@ vs = VideoStream(src=args["webcam"]).start()
 time.sleep(1.0)
 
 
-
-
 #  The  device  connection  string  to  authenticate  the  device  with  your  IoT  hub.
 #  Using  the  Azure  CLI:
 #  az  iot  hub  device-identity  show-connection-string  --hub-name  {YourIoTHubName}  --device-id  MyNodeDevice  --output  table
@@ -193,12 +191,6 @@ try:
                 if key == ord("q"):
                     break
                 
-                
-                
-
-
-
-
                 print(  "Sending  message:  {}".format(message)  )
                 client.send_message(message)
                 print  (  "Message  successfully  sent"  )
