@@ -88,9 +88,7 @@ vs = VideoStream(src=args["webcam"]).start()
 time.sleep(1.0)
 
 
-#  The  device  connection  string  to  authenticate  the  device  with  your  IoT  hub.
-#  Using  the  Azure  CLI:
-#  az  iot  hub  device-identity  show-connection-string  --hub-name  {YourIoTHubName}  --device-id  MyNodeDevice  --output  table
+#primary connection string of the device
 CONNECTION_STRING  =  "HostName=Drowsiness.azure-devices.net;DeviceId=RasPi_Drowsiness;SharedAccessKey=AYJxOa1UQi08+Oor0ES/vm68yuNKq20cqIk9FZi7+7o="
 
 
@@ -98,14 +96,15 @@ MSG_TXT  =  '{{"temperature":  {EAR},"humidity":  {yawn}}}'
 message=''
 
 def  iothub_client_init():
-        #  Create  an  IoT  Hub  client
+        #  create client to send data
         client  =  IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
         return  client
 
 
 try:
         client  =  iothub_client_init()
-        print  (  "IoT  Hub  device  sending  periodic  messages,  press  Ctrl-C  to  exit"  )
+        # code only for 1 client
+        print  (  "while loop to send data"  )
 
         while  True:
                
@@ -193,11 +192,9 @@ try:
                 
                 print(  "Sending  message:  {}".format(message)  )
                 client.send_message(message)
-                print  (  "Message  successfully  sent"  )
                 time.sleep(1)
 
 except  KeyboardInterrupt  :  #  Send  the  message.
                 print(  "Sending  message:  {}".format(message)  )
                 client.send_message(message)
-                print  (  "Message  successfully  sent"  )
                 time.sleep(0.05)
